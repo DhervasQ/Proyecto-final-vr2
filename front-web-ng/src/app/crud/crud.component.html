@@ -1,0 +1,169 @@
+<!-- PEOPLE CRUD PAGE -->
+
+<br>
+<h1 class="text-center mt-3">People</h1>
+
+<div id="tabla-container" class="table-container"
+    style="overflow-x:scroll;margin-left:2%;margin-right:2%;margin-top:2%;">
+</div>
+
+<div class="container d-flex justify-content-center align-items-center mb-2" style="margin-top:2%">
+    <button id="crudAddElementToggleButton" class="btn btn-info btn-lg" style="width:50%;">
+        <i class="fa fa-eye"></i> Mostrar/Ocultar menú de creación
+    </button>
+</div>
+
+<div id="crudFormularioContainer" class="mt-2 mb-2" style="display:none">
+    <div class="container">
+        <h2>Formulario de Persona</h2>
+
+        <button class="btn btn-dark mb-3" id="reset-to-post">
+            Resetear
+        </button>
+
+        <form id="formularioPeople">
+
+            <input type="text" class="hidden" id="id" hidden>
+
+            <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fecha_nacimiento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" class="form-control" id="nacionalidad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <input type="text" class="form-control" id="sexo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo_ident">Tipo de Identificación</label>
+                <input type="text" class="form-control" id="tipo_ident" required>
+            </div>
+
+            <div class="form-group">
+                <label for="identificacion">Identificación</label>
+                <input type="text" class="form-control" id="identificacion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apellido1">Primer Apellido</label>
+                <input type="text" class="form-control" id="apellido1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apellido2">Segundo Apellido</label>
+                <input type="text" class="form-control" id="apellido2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="movil">Móvil</label>
+                <input type="tel" class="form-control" id="movil" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="number" class="form-control" id="edad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="datos_adicionales">Datos Adicionales</label>
+                <textarea class="form-control" id="datos_adicionales" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre_titular_banco">Nombre del Titular de la Cuenta Bancaria</label>
+                <input type="text" class="form-control" id="nombre_titular_banco" required>
+            </div>
+
+            <div class="form-group">
+                <label for="titular_nif_banco">NIF del Titular de la Cuenta Bancaria</label>
+                <input type="text" class="form-control" id="titular_nif_banco" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo_cuenta_bancaria">Tipo de Cuenta Bancaria</label>
+                <input type="text" class="form-control" id="tipo_cuenta_bancaria" required>
+            </div>
+
+            <div class="form-group">
+                <label for="num_cuenta_bancaria">Número de Cuenta Bancaria</label>
+                <input type="text" class="form-control" id="num_cuenta_bancaria" required>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" class="form-control" id="direccion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="numero_direccion">Número de Dirección</label>
+                <input type="text" class="form-control" id="numero_direccion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="piso_direccion">Piso de Dirección</label>
+                <input type="text" class="form-control" id="piso_direccion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="extension_direccion">Extensión de Dirección</label>
+                <input type="text" class="form-control" id="extension_direccion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="codigo_postal">Código Postal</label>
+                <input type="text" class="form-control" id="codigo_postal" required>
+            </div>
+
+            <div class="form-group">
+                <label for="poblacion">Población</label>
+                <input type="text" class="form-control" id="poblacion" required>
+            </div>
+
+            <div class="form-group">
+                <label for="provincia">Provincia</label>
+                <input type="text" class="form-control" id="provincia" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pais">País</label>
+                <input type="text" class="form-control" id="pais" required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="pais">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+
+            <button id="enviarElemento" type="submit" class="btn btn-primary" style="width: 50%;
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 3%;">Crear</button>
+        </form>
+    </div>
+</div>
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalButton">&times;</span>
+        <h4 class="modal-title">Vista elemento</h4>
+        <p id="modal-text">Ha ocurrido algún error.</p>
+    </div>
+</div>
