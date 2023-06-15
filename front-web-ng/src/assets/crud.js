@@ -475,8 +475,11 @@ async function enviarFormulario(event) {
         } else {
             // Realizar solicitud de creación (POST)
             const peopleObtained = JSON.parse(await postAPIElements(JWT_TOKEN, "http://localhost:3000/usuarios", people));
-            mostrarExito("Elemento añadido");
-            addElementToTable(peopleObtained); // Agregar una nueva fila a la tabla
+            if (!document.querySelector('table tbody')) { // first elemennt added
+                generateTable()
+            } else {
+                addElementToTable(peopleObtained); // Agregar una nueva fila a la tabla
+            }
         }
         document.getElementById("formularioPeople").reset();
     } catch (error) {
