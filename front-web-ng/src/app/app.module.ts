@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { RegistroComponent } from './registro/registro.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CrudProductosComponent } from './crud-productos/crud-productos.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LogoutComponent } from './logout/logout.component';
     CrudComponent,
     MainComponent,
     NavbarComponent,
-    LogoutComponent
+    LogoutComponent,
+    CrudProductosComponent
   ],
   imports: [
     HttpClientModule,
