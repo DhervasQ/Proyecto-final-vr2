@@ -193,6 +193,78 @@ app.delete('/usuarios/:id', authenticate, (req, res) => {
   });
 });
 
+
+// Obtener todos los productos
+app.get('/productos', (req, res) => {
+    connection.query('SELECT * FROM Producto', (error, results) => {
+        if (error) {
+            console.error('Error al obtener productos:', error);
+            res.status(500).json({ error: 'Error al obtener productos' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// Obtener un producto por su ID
+app.get('/productos/:id', (req, res) => {
+    const productoId = req.params.id;
+    connection.query('SELECT * FROM Producto WHERE Id = ?', productoId, (error, results) => {
+        if (error) {
+            console.error('Error al obtener producto:', error);
+            res.status(500).json({ error: 'Error al obtener producto' });
+        } else {
+            if (results.length > 0) {
+                const producto = results[0];
+                res.json(producto);
+            } else {
+                res.status(404).json({ error: 'Producto no encontrado' });
+            }
+        }
+    });
+});
+
+// Crear un nuevo producto
+app.post('/productos', (req, res) => {
+    const nuevoProducto = req.body;
+    connection.query('INSERT INTO Producto SET ?', nuevoProducto, (error, result) => {
+        if (error) {
+            console.error('Error al crear producto:', error);
+            res.status(500).json({ error: 'Error al crear producto' });
+        } else {
+            const productoConID = { ...nuevoProducto, id: result.insertId };
+            res.json(productoConID);
+        }
+    });
+});
+
+// Actualizar un producto
+app.put('/productos/:id', (req, res) => {
+    const productoId = req.params.id;
+    const nuevoProducto = req.body;
+    connection.query('UPDATE Producto SET ? WHERE Id = ?', [nuevoProducto, productoId], (error, result) => {
+        if (error) {
+            console.error('Error al actualizar producto:', error);
+            res.status(500).json({ error: 'Error al actualizar producto' });
+        } else {
+            res.json({ message: 'Producto actualizado exitosamente' });
+        }
+    });
+});
+
+// Eliminar un producto
+app.delete('/productos/:id', (req, res) => {
+    const productoId = req.params.id;
+    connection.query('DELETE FROM Producto WHERE Id = ?', productoId, (error, result) => {
+        if (error) {
+            console.error('Error al eliminar producto:', error);
+            res.status(500).json({ error: 'Error al eliminar producto' });
+        } else {
+            res.json({ message: 'Producto eliminado exitosamente' });
+        }
+    });
+});
+
 // Iniciar el servidor en el puerto 3000
 app.listen(3000, () => {
   console.log('Servidor iniciado en el puerto 3000');
