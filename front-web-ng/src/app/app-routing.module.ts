@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { CrudComponent } from './crud/crud.component';
+import { CrudProductosComponent } from './crud-productos/crud-productos.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MainComponent } from './main/main.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'registro', component: RegistroComponent },
     { path: 'crud', component: CrudComponent },
+    { path: 'crud-productos', component: CrudProductosComponent },
     { path: 'logout', component: LogoutComponent },
 ];
 
